@@ -3,12 +3,35 @@
 ## 2.1.a
 
 Is it possible that some exception would happen **inside** `Lock.lock` or `Lock.unlock` method? Justify your answer by using precise `chapter.section` number from Java Language Specification.
+The JVM can inject unchecked (especially asynchronous) exceptions at virtually any point (JLS §11.1.3, §11.2.3).
+yes
+IllegalMonitorStateException 
+
+lock.lock(); <- exception thrown
+try {
+    // critical section
+} finally {
+    lock.unlock(); <- never happened => deadlock might occur
+}
+
+even if lock() is wrapped with try catch, unlock in this example is going to be illegal if lock was not acquired
 
 **Hint**: `sqrt[3]{1331}` is good magic number.
 
 ## 2.1.b
 
 Is it possible to design ''bullet-proof'' (w.r.t. exceptions) concurrency primitives in Java language? Justify your answer by using precise JDK Enhancement Proposal number.
+
+StackOverflowError\OutOfMemoryError (resource-exhaustion errors)
+jep 270
+
+Provides a mechanism to mitigate the risk of deadlocks caused by the corruption of critical data such as java.util.concurrent locks (such as ReentrantLock) caused by a StackOverflowError being thrown in a critical section.
+
+
+Adds reserved stack areas for critical sections Annotated methods (@ReservedStackAccess) can execute even near stack exhaustion which reduces probability of failure in critical sections
+Does not ensure correctness under all conditions
+
+A StackOverflowError may still occur at arbitrary points, including inside critical sections.
 
 **Hint**: `sqrt{72900}` is good magic number, too.
 
