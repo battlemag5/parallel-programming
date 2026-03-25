@@ -50,7 +50,22 @@ A.1-B.1-A.2-B.2-A.3-B.3-A.4-A.5-B.4-B.5
 
 no
 rz = 1 requires B.4 to read x = 1
-then B.5 runs too hence no operation can write 1 again because A.5 can only write 1 and must occur before B.4 to produce that 1 for B.4
+then B.5 runs too hence no operation can write 1 again because A.4 can only write 1 and must occur before B.4 to produce that 1 for B.4
+===
+to elaborate
+in order to get r_y = 0, x has to be set to zero, hence A.4 should run before B.5
+
+for r_z = 1, A.5 should run before B.4 too
+
+for x to remain 1, the model is required to run sumn like A.4-B.4-A.5-B.5 (subject to change but the idea stays the same), the problem is that A.5 has to run before B.4
+contradiction
+===
+bs \\//
+
+there are essentially two options for path left, when Thread A finishes (or almost finishes) before B, when both threads enter if block simultaniosly (thread local x variable is 0).
+First option does not let r_z to be set to 1, so its not viable. Considering the conditions set previously, thread A should exit its if block before thread B therefore, x is going to be set to 2.
+
+bs //\\
 
 **Hint.** Proof of impossibility could be structured in the following way:
 - assume there exists concurrent execution trace where `main` thread observes `var == N`
