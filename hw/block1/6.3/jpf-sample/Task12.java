@@ -68,8 +68,8 @@ class Task12 {
         System.out.printf("x = %2d, r_y = %2d, r_z = %2d | %s\n", x, A_r_y, B_r_z, trace());
 
         // TODO: uncomment me and also change Task12.jpf (target.args=1)
-        //if (x == 2 && A_r_y == 0 && B_r_z == 1) {
-        //  assert false;
-        //}
+        if (x == 2 && A_r_y == 0 && B_r_z == 1) {
+          assert false;
+        }
     }
 }
