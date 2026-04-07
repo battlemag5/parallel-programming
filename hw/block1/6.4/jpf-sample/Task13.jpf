@@ -1,5 +1,5 @@
 target=Task13
-target.args=0
+target.args=1
 
 cg.enumerate_random = true
 
