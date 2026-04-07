@@ -14,6 +14,11 @@ try {
     lock.unlock(); <- never happened => deadlock might occur
 }
 
+исключения которые могут быть, как их решить почему некоторые не решить
+
+по поводу задачи про jep, был поставлен вопрос на 2.1(а) — какие варианты эксепшнов могут вылетать в lock/unlock и как с ними можно бороться: из JVM-level Error-ов релевантны StackOverflowError, OutOfMemoryError, AssertionError, InternalError, UnknownError и LinkageError, при этом это не значит, что их нельзя поймать технически, но это именно фатальные состояния или около того, после которых продолжать выполнение небезопасно. По поводу решения, StackOverflow, зная, что написано в jep-e, я вряд-ли предложу решение лучше. JVM резервирует часть стека, чтобы критическая секция успела завершиться и не повредила данные. Для OutOfMemoryError аналогичный подход не подходит: жвм уже не может выделить объект и GC не может освободить достаточно памяти, а значит безопасно добавить память для каждого потока или для каждой критической секции кажется что невозможно, поэтому для ооме, предлагается передавать релевантные флаги: -XX:+HeapDumpOnOutOfMemoryError, -XX:OnOutOfMemoryError=..., -XX:+ExitOnOutOfMemoryError, -XX:+CrashOnOutOfMemoryError. AssertionError в общем случае решается исправлением инварианта или просто отключением ассертов)) InternalError и UnknownError уже уровня жвм сломалась, кажется что их не вылечить обработчиком. LinkageError связаны (их там несоклько) с загрузкой и резолюцией классов, поэтому оно тоже не является задачей для специальной обработки
+
+
 even if lock() is wrapped with try catch, unlock in this example is going to be illegal if lock was not acquired
 
 **Hint**: `sqrt[3]{1331}` is good magic number.
