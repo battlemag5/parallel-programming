@@ -1,7 +1,5 @@
-#!/usr/bin/env bash
 
-set -euo pipefail
-
+set -eu
 export IMAGE_NAME=svazars/parallel-programming-tools:jpf
 
 # Step 0: ensure you have up-to-date docker image with jpf
