@@ -1,0 +1,200 @@
+====================================================== system under test
+Task12.main("0")
+
+====================================================== search started: 4/7/26, 3:30 PM
+x =  1, r_y =  0, r_z = -1 |
+x =  1, r_y =  0, r_z = -1 |
+x =  2, r_y =  0, r_z =  1 |
+
+====================================================== error 1
+gov.nasa.jpf.vm.NoUncaughtExceptionsProperty
+java.lang.AssertionError
+        at Task12.main(Task12.java:72)
+
+
+====================================================== snapshot #1
+no live threads
+
+====================================================== trace #1
+------------------------------------------------------ transition #0 thread: 0
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"ROOT" ,1/1,isCascaded:false}
+      [9165 insn w/o sources]
+  Task12.java:3                  : class Task12 {
+      [2 insn w/o sources]
+  Task12.java:3                  : class Task12 {
+  Task12.java:5                  : private static boolean ENABLED_LOGGING = false;
+  Task12.java:6                  : private static ArrayList<String> trace = new ArrayList<>();
+      [9 insn w/o sources]
+  Task12.java:6                  : private static ArrayList<String> trace = new ArrayList<>();
+      [16 insn w/o sources]
+  Task12.java:6                  : private static ArrayList<String> trace = new ArrayList<>();
+  Task12.java:26                 : static int x = 0;
+  Task12.java:27                 : static int A_r_y = 0;
+  Task12.java:28                 : static int B_r_z = 0;
+  Task12.java:1                  : import java.util.ArrayList;
+      [1 insn w/o sources]
+  Task12.java:55                 : if (args.length > 0) {
+  Task12.java:56                 : ENABLED_LOGGING = Integer.parseInt(args[0]) != 0;
+      [2 insn w/o sources]
+  Task12.java:56                 : ENABLED_LOGGING = Integer.parseInt(args[0]) != 0;
+  Task12.java:59                 : Thread a = new A();
+  Task12.java:30                 : static class A extends Thread {
+      [585 insn w/o sources]
+  Task12.java:30                 : static class A extends Thread {
+  Task12.java:59                 : Thread a = new A();
+  Task12.java:60                 : Thread b = new B();
+  Task12.java:42                 : static class B extends Thread {
+      [499 insn w/o sources]
+  Task12.java:42                 : static class B extends Thread {
+  Task12.java:60                 : Thread b = new B();
+  Task12.java:62                 : a.start();
+      [1 insn w/o sources]
+------------------------------------------------------ transition #1 thread: 0
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"START" ,1/2,isCascaded:false}
+      [2 insn w/o sources]
+  Task12.java:63                 : b.start();
+      [1 insn w/o sources]
+------------------------------------------------------ transition #2 thread: 0
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"START" ,1/3,isCascaded:false}
+      [2 insn w/o sources]
+  Task12.java:65                 : a.join();
+      [1 insn w/o sources]
+------------------------------------------------------ transition #3 thread: 1
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"JOIN" ,1/2,isCascaded:false}
+      [1 insn w/o sources]
+  Task12.java:1                  : import java.util.ArrayList;
+  Task12.java:32                 : int y = -1;     log("A.1");
+------------------------------------------------------ transition #4 thread: 1
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"LOCK" ,1/2,isCascaded:false}
+  Task12.java:32                 : int y = -1;     log("A.1");
+  Task12.java:8                  : if (!ENABLED_LOGGING) {
+------------------------------------------------------ transition #5 thread: 1
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"SHARED_CLASS" ,1/2,isCascaded:false}
+  Task12.java:8                  : if (!ENABLED_LOGGING) {
+  Task12.java:9                  : return;
+  Task12.java:33                 : int a_x = x;    log("A.2");
+------------------------------------------------------ transition #6 thread: 1
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"SHARED_CLASS" ,1/2,isCascaded:false}
+  Task12.java:33                 : int a_x = x;    log("A.2");
+------------------------------------------------------ transition #7 thread: 1
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"LOCK" ,1/2,isCascaded:false}
+  Task12.java:33                 : int a_x = x;    log("A.2");
+  Task12.java:8                  : if (!ENABLED_LOGGING) {
+------------------------------------------------------ transition #8 thread: 1
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"SHARED_CLASS" ,1/2,isCascaded:false}
+  Task12.java:8                  : if (!ENABLED_LOGGING) {
+  Task12.java:9                  : return;
+  Task12.java:34                 : if (a_x == 0) { log("A.3==0");
+------------------------------------------------------ transition #9 thread: 1
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"LOCK" ,1/2,isCascaded:false}
+  Task12.java:34                 : if (a_x == 0) { log("A.3==0");
+  Task12.java:8                  : if (!ENABLED_LOGGING) {
+------------------------------------------------------ transition #10 thread: 1
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"SHARED_CLASS" ,1/2,isCascaded:false}
+  Task12.java:8                  : if (!ENABLED_LOGGING) {
+  Task12.java:9                  : return;
+  Task12.java:35                 : y = x;      log("A.4");
+------------------------------------------------------ transition #11 thread: 1
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"SHARED_CLASS" ,1/2,isCascaded:false}
+  Task12.java:35                 : y = x;      log("A.4");
+------------------------------------------------------ transition #12 thread: 1
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"LOCK" ,1/2,isCascaded:false}
+  Task12.java:35                 : y = x;      log("A.4");
+  Task12.java:8                  : if (!ENABLED_LOGGING) {
+------------------------------------------------------ transition #13 thread: 1
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"SHARED_CLASS" ,1/2,isCascaded:false}
+  Task12.java:8                  : if (!ENABLED_LOGGING) {
+  Task12.java:9                  : return;
+  Task12.java:36                 : x = y + 1;  log("A.5");
+------------------------------------------------------ transition #14 thread: 2
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"SHARED_CLASS" ,2/2,isCascaded:false}
+      [1 insn w/o sources]
+  Task12.java:1                  : import java.util.ArrayList;
+  Task12.java:44                 : int z = -1;     log("B.1");
+------------------------------------------------------ transition #15 thread: 2
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"LOCK" ,2/2,isCascaded:false}
+  Task12.java:44                 : int z = -1;     log("B.1");
+  Task12.java:8                  : if (!ENABLED_LOGGING) {
+------------------------------------------------------ transition #16 thread: 2
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"SHARED_CLASS" ,2/2,isCascaded:false}
+  Task12.java:8                  : if (!ENABLED_LOGGING) {
+  Task12.java:9                  : return;
+  Task12.java:45                 : int b_x = x;    log("B.2");
+------------------------------------------------------ transition #17 thread: 2
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"SHARED_CLASS" ,2/2,isCascaded:false}
+  Task12.java:45                 : int b_x = x;    log("B.2");
+------------------------------------------------------ transition #18 thread: 1
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"LOCK" ,1/2,isCascaded:false}
+  Task12.java:36                 : x = y + 1;  log("A.5");
+------------------------------------------------------ transition #19 thread: 1
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"LOCK" ,1/2,isCascaded:false}
+  Task12.java:36                 : x = y + 1;  log("A.5");
+  Task12.java:8                  : if (!ENABLED_LOGGING) {
+  Task12.java:9                  : return;
+------------------------------------------------------ transition #20 thread: 1
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"RELEASE" ,1/2,isCascaded:false}
+  Task12.java:9                  : return;
+  Task12.java:36                 : x = y + 1;  log("A.5");
+  Task12.java:38                 : A_r_y = y;
+------------------------------------------------------ transition #21 thread: 1
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"SHARED_CLASS" ,1/2,isCascaded:false}
+  Task12.java:38                 : A_r_y = y;
+  Task12.java:39                 : }
+  Task12.java:4                  :
+------------------------------------------------------ transition #22 thread: 0
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"TERMINATE" ,1/2,isCascaded:false}
+      [2 insn w/o sources]
+  Task12.java:66                 : b.join();
+      [1 insn w/o sources]
+------------------------------------------------------ transition #23 thread: 2
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"JOIN" ,1/1,isCascaded:false}
+  Task12.java:45                 : int b_x = x;    log("B.2");
+  Task12.java:8                  : if (!ENABLED_LOGGING) {
+  Task12.java:9                  : return;
+  Task12.java:46                 : if (b_x == 0) { log("B.3==0");
+  Task12.java:8                  : if (!ENABLED_LOGGING) {
+  Task12.java:9                  : return;
+  Task12.java:47                 : z = x;      log("B.4");
+  Task12.java:8                  : if (!ENABLED_LOGGING) {
+  Task12.java:9                  : return;
+  Task12.java:48                 : x = z + 1;  log("B.5");
+  Task12.java:8                  : if (!ENABLED_LOGGING) {
+  Task12.java:9                  : return;
+  Task12.java:48                 : x = z + 1;  log("B.5");
+  Task12.java:50                 : B_r_z = z;
+  Task12.java:51                 : }
+  Task12.java:4                  :
+------------------------------------------------------ transition #24 thread: 0
+gov.nasa.jpf.vm.choice.ThreadChoiceFromSet {id:"TERMINATE" ,1/1,isCascaded:false}
+      [2 insn w/o sources]
+  Task12.java:68                 : System.out.printf("x = %2d, r_y = %2d, r_z = %2d | %s\n", x, A_r_y, B_r_z, trace());
+      [2 insn w/o sources]
+  Task12.java:68                 : System.out.printf("x = %2d, r_y = %2d, r_z = %2d | %s\n", x, A_r_y, B_r_z, trace());
+      [2 insn w/o sources]
+  Task12.java:68                 : System.out.printf("x = %2d, r_y = %2d, r_z = %2d | %s\n", x, A_r_y, B_r_z, trace());
+      [2 insn w/o sources]
+  Task12.java:68                 : System.out.printf("x = %2d, r_y = %2d, r_z = %2d | %s\n", x, A_r_y, B_r_z, trace());
+  Task12.java:15                 : if (!ENABLED_LOGGING) {
+  Task12.java:16                 : return "";
+  Task12.java:68                 : System.out.printf("x = %2d, r_y = %2d, r_z = %2d | %s\n", x, A_r_y, B_r_z, trace());
+      [2 insn w/o sources]
+  Task12.java:68                 : System.out.printf("x = %2d, r_y = %2d, r_z = %2d | %s\n", x, A_r_y, B_r_z, trace());
+  Task12.java:71                 : if (x == 2 && A_r_y == 0 && B_r_z == 1) {
+  Task12.java:72                 : assert false;
+      [24 insn w/o sources]
+  Task12.java:72                 : assert false;
+  Task12.java:3                  : class Task12 {
+
+====================================================== results
+error #1: gov.nasa.jpf.vm.NoUncaughtExceptionsProperty "java.lang.AssertionError  at Task12.main(Task12.ja..."
+
+====================================================== statistics
+elapsed time:       00:00:00
+states:             new=108,visited=60,backtracked=143,end=3
+search:             maxDepth=27,constraints=0
+choice generators:  thread=107 (signal=0,lock=26,sharedRef=40,threadApi=19,reschedule=22), data=0
+heap:               new=1483,released=71,maxLive=806,gcCycles=125
+instructions:       11310
+max memory:         128MB
+loaded code:        classes=99,methods=2530
+

@@ -1,6 +1,5 @@
-#!/usr/bin/env bash
 
-set -euo pipefail
+set -eu
 
 export IMAGE_NAME=svazars/parallel-programming-tools:jpf
 

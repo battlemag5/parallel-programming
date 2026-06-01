@@ -1,0 +1,33 @@
+====================================================== system under test
+Task12.main("0")
+
+====================================================== search started: 4/7/26, 3:26 PM
+x =  1, r_y =  0, r_z = -1 |
+x =  1, r_y =  0, r_z = -1 |
+x =  2, r_y =  0, r_z =  1 |
+x =  2, r_y =  0, r_z =  1 |
+x =  1, r_y =  0, r_z =  0 |
+x =  1, r_y =  0, r_z =  0 |
+x =  2, r_y =  1, r_z =  0 |
+x =  2, r_y =  1, r_z =  0 |
+x =  1, r_y = -1, r_z =  0 |
+x =  1, r_y = -1, r_z =  0 |
+x =  1, r_y =  0, r_z = -1 |
+x =  2, r_y =  0, r_z =  1 |
+x =  1, r_y =  0, r_z =  0 |
+x =  2, r_y =  1, r_z =  0 |
+x =  1, r_y = -1, r_z =  0 |
+
+====================================================== results
+no errors detected
+
+====================================================== statistics
+elapsed time:       00:00:00
+states:             new=1430,visited=1745,backtracked=3175,end=15
+search:             maxDepth=34,constraints=0
+choice generators:  thread=1426 (signal=0,lock=443,sharedRef=624,threadApi=65,reschedule=294), data=0
+heap:               new=5811,released=331,maxLive=810,gcCycles=2256
+instructions:       24301
+max memory:         128MB
+loaded code:        classes=95,methods=2488
+
